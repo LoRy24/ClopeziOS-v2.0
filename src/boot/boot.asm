@@ -6,29 +6,29 @@
     org     0x7c00
 
 ;;; The entry of the code
-main_code:                                  	                ;; the main code block
+main_code:                                                      ;; the main code block
     ;;; Set the offset
-    cli                                     	                ;; clear the interrupts
-    mov     ax, 0x00                           	                ;; set the segment location to 0x7c0
-    mov     ds, ax                          	                ;; update the data segment
-    mov     es, ax                          	                ;; update the extra segment
-    mov     ss, ax                          	                ;; update the stack segment
-    mov     sp, 0x7c00                       	                ;; update the stack pointer to 0x7c00
+    cli                                                         ;; clear the interrupts
+    mov     ax, 0x00                                            ;; set the segment location to 0x7c0
+    mov     ds, ax                                              ;; update the data segment
+    mov     es, ax                                              ;; update the extra segment
+    mov     ss, ax                                              ;; update the stack segment
+    mov     sp, 0x7c00                                          ;; update the stack pointer to 0x7c00
     sti                                     	                ;; enable the interrupts
 
     ;;; Register the interrupts
-    mov     word[ss:0x00], handle_zero			                ;; set the interrupt offset
-    mov     word[ss:0x02], 0x7c0				                ;; set the interrupt sector
+    mov     word[ss:0x00], handle_zero                          ;; set the interrupt offset
+    mov     word[ss:0x02], 0x7c0                                ;; set the interrupt sector
 
     ;;; Read data from the disk
-    mov     al, 1                           	                ;; read 2 sectors from the disk
-    mov     cl, 2                           	                ;; read from the 2nd sector
+    mov     al, 1                                               ;; read 2 sectors from the disk
+    mov     cl, 2                                               ;; read from the 2nd sector
 
-    xor     bx, bx                          	                ;; clear the bx register
-    mov     es, bx                          	                ;; move bx to es (for buffer pointing)
-    mov     bx, new_sector_buffer           	                ;; give the buffer address to bx
+    xor     bx, bx                                              ;; clear the bx register
+    mov     es, bx                                              ;; move bx to es (for buffer pointing)
+    mov     bx, new_sector_buffer                               ;; give the buffer address to bx
 
-    call    read_sectors_from_disk          	                ;; call the created function
+    call    read_sectors_from_disk                              ;; call the created function
 
     call    clear_screen                                        ;; clear the screen
 
@@ -37,7 +37,7 @@ main_code:                                  	                ;; the main code bl
     mov     ah, 00001110b                                       ;; move the color (BGBG FGFG)
     call    print_string_directly_to_vga_memory                 ;; print the string
 
-    jmp     $                               	                ;; LOOP: jmp to the current addr ($)
+    jmp     $                                                   ;; LOOP: jmp to the current addr ($)
 
 hello_world:
     db      "Hello World!", 0x0A, 0                             ;; Define the Hello World string
