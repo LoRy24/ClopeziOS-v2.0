@@ -14,7 +14,7 @@ main_code:                                                      ;; the main code
     mov     es, ax                                              ;; update the extra segment
     mov     ss, ax                                              ;; update the stack segment
     mov     sp, 0x7c00                                          ;; update the stack pointer to 0x7c00
-    sti                                     	                ;; enable the interrupts
+    sti                                                         ;; enable the interrupts
 
     ;;; Register the interrupts
     mov     word[ss:0x00], handle_zero                          ;; set the interrupt offset
