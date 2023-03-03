@@ -17,8 +17,8 @@ main_code:                                  	                ;; the main code bl
     sti                                     	                ;; enable the interrupts
 
     ;;; Register the interrupts
-    mov 	word[ss:0x00], handle_zero			                ;; set the interrupt offset
-    mov		word[ss:0x02], 0x7c0				                ;; set the interrupt sector
+    mov     word[ss:0x00], handle_zero			                ;; set the interrupt offset
+    mov     word[ss:0x02], 0x7c0				                ;; set the interrupt sector
 
     ;;; Read data from the disk
     mov     al, 1                           	                ;; read 2 sectors from the disk
@@ -43,9 +43,9 @@ hello_world:
     db      "Hello World!", 0x0A, 0                             ;; Define the Hello World string
 
 ;;; Include the utilities of the boot sector
-include 	"./utils_16/print_utilities.asm"
-include 	"./utils_16/disk_read.asm"
-include 	'./utils_16/interrupts/interrupt_zero.asm'
+include     "./utils_16/print_utilities.asm"
+include     "./utils_16/disk_read.asm"
+include     './utils_16/interrupts/interrupt_zero.asm'
 
 ;;; Fill the sector space with 0
     times   510 - ($ - $$) db 0
