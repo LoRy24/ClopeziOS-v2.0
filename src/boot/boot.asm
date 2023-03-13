@@ -45,7 +45,7 @@ hello_world:
 ;;; Include the utilities of the boot sector
 include     "./utils_16/print_utilities.asm"
 include     "./utils_16/disk_read.asm"
-include     './utils_16/interrupts/interrupt_zero.asm'
+include     "./utils_16/interrupts/interrupt_zero.asm"
 
 ;;; Fill the sector space with 0
     times   510 - ($ - $$) db 0
