@@ -3,7 +3,7 @@
 ;;; cock inspector eu.                                                                          ;;;
 ;;;                                                                                             ;;;
 
-    org     0x7c00
+    org     0x7c00                                              ;; starter offset
 
 ;;; The entry of the code
 main_code:                                                      ;; the entry point label
