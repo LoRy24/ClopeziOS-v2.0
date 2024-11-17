@@ -6,7 +6,7 @@
     org     0x7c00
 
 ;;; The entry of the code
-main_code:                                                      ;; the main code block
+main_code:                                                      ;; the entry point label
     ;;; Set the offset
     cli                                                         ;; clear the interrupts
     mov     ax, 0x00                                            ;; set the segment location to 0x7c0
